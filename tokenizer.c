@@ -8,7 +8,7 @@
 */
 
 struct TokenizerT_ {
-
+     char* inputstr;
 };
 
 typedef struct TokenizerT_ TokenizerT;
