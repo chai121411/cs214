@@ -70,6 +70,12 @@ char *TKGetNextToken( TokenizerT * tk  ) {
 */
 
 int main(int argc, char **argv) {
+    if(argc != 2){
+	printf("Wrong number of arguments were given\n");
+	return 1;
+    }
+    TokenizerT* tokenizer = TKCreate(argv[1]);
+	
 
     return 0;
 
