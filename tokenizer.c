@@ -9,6 +9,7 @@
 
 struct TokenizerT_ {
      char* inputstr;
+     char* ptr;
 };
 
 typedef struct TokenizerT_ TokenizerT;
@@ -28,8 +29,20 @@ typedef struct TokenizerT_ TokenizerT;
 */
 
 TokenizerT *TKCreate( char * ts  ) {
+  if(ts == NULL)
     return NULL;
 
+  TokenizerT* tokenizer = (TokenizerT*)malloc(sizeof(TokenizerT));
+  if(tokenizer == NULL){     //Check if malloc was successfull
+    printf("MALLOC FAILED\n"); 
+    return NULL;
+  }
+
+  tokenizer->inputstr = (char*)malloc( (sizeof(char)*strlen(ts)) + 1);     //Add one for room to null terminate
+  strcpy(tokenizer->inputstr, ts);
+  tokenizer->inputstr[strlen(ts)] = '\0'; 
+
+  return tokenizer;
 }
 
 /*
@@ -40,7 +53,8 @@ TokenizerT *TKCreate( char * ts  ) {
 */
 
 void TKDestroy( TokenizerT * tk  ) {
-
+  free(tk->inputstr);
+  free(tk);
 }
 
 /*
@@ -56,9 +70,7 @@ void TKDestroy( TokenizerT * tk  ) {
 */
 
 char *TKGetNextToken( TokenizerT * tk  ) {
-
     return NULL;
-
 }
 
 /*
@@ -69,7 +81,18 @@ char *TKGetNextToken( TokenizerT * tk  ) {
 */
 
 int main(int argc, char **argv) {
+    if(argc != 2){
+	printf("Wrong number of arguments were given\n");
+	return 0;
+    }
+    TokenizerT* tokenizer = TKCreate(argv[1]);
+	
+    char* returnedtoken = NULL;
+    while((returnedtoken = TKGetNextToken(tokenizer->ptr)) != NULL){
+	//Print returnedtoken 
+    }	
 
+    TKDestroy(tokenizer);
     return 0;
 
 }
