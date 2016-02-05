@@ -34,7 +34,7 @@ TokenizerT *TKCreate( char * ts  ) {
 
   TokenizerT* tokenizer = (TokenizerT*)malloc(sizeof(TokenizerT));
   if(tokenizer == NULL){     //Check if malloc was successfull
-    printf("MALLOC FAILED\N"); 
+    printf("MALLOC FAILED\n"); 
     return NULL;
   }
 
@@ -70,9 +70,7 @@ void TKDestroy( TokenizerT * tk  ) {
 */
 
 char *TKGetNextToken( TokenizerT * tk  ) {
-
     return NULL;
-
 }
 
 /*
@@ -89,7 +87,12 @@ int main(int argc, char **argv) {
     }
     TokenizerT* tokenizer = TKCreate(argv[1]);
 	
+    char* returnedtoken = NULL;
+    while((returntoken = TKGetNextToken(tokenizer->ptr)) != NULL){
+	//Print returnedtoken 
+    }	
 
+    TKDestroy(tokenizer);
     return 0;
 
 }

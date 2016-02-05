@@ -97,11 +97,11 @@ char* printOperators(char* str){
   }
   else if(str[0] == '%'){
     if(str[1] == '='){
-      printf("moduloequals: %=\n");
+      printf("moduloequals: %%=\n");
       return ptr += 2;
     }
     else{ 
-      printf("modulo: %\n");    
+      printf("modulo: %%\n");    
       return ++ptr;
     }
   }
