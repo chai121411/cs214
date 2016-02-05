@@ -34,7 +34,7 @@ TokenizerT *TKCreate( char * ts  ) {
 
   TokenizerT* tokenizer = (TokenizerT*)malloc(sizeof(TokenizerT));
   if(tokenizer == NULL){     //Check if malloc was successfull
-    printf("MALLOC FAILED\N"); 
+    printf("MALLOC FAILED\n"); 
     return NULL;
   }
 
