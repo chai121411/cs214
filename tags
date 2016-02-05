@@ -1,0 +1,11 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+decIntNextChar	/home/le/spring2016/cs214/decIntNextChar.c	/^int decIntNextChar(char nextChar, int condition){$/;"	f	language:C++
+main	/home/le/spring2016/cs214/tokenizer.c	/^int main(int argc, char **argv) {$/;"	f	language:C++
+nextWordChar	/home/le/spring2016/cs214/wordNextChar.c	/^int nextWordChar(char nextChar){$/;"	f	language:C++
+octNextChar	/home/le/spring2016/cs214/octNextChar.c	/^int octNextChar(char nextChar, int condition){$/;"	f	language:C++
+TKCreate	/home/le/spring2016/cs214/tokenizer.c	/^TokenizerT *TKCreate( char * ts  ) {$/;"	f	language:C++
+TKDestroy	/home/le/spring2016/cs214/tokenizer.c	/^void TKDestroy( TokenizerT * tk  ) {$/;"	f	language:C++
+TKGetNextToken	/home/le/spring2016/cs214/getNextToken.c	/^char *TKGetNextToken( TokenizerT * tk  ) {$/;"	f	language:C++
+TKGetNextToken	/home/le/spring2016/cs214/tokenizer.c	/^char *TKGetNextToken( TokenizerT * tk  ) {$/;"	f	language:C++
+TokenizerT	/home/le/spring2016/cs214/tokenizer.c	/^typedef struct TokenizerT_ TokenizerT;$/;"	t	language:C++	typeref:struct:TokenizerT_	file:
+TokenizerT_	/home/le/spring2016/cs214/tokenizer.c	/^struct TokenizerT_ {$/;"	s	language:C++	file:
