@@ -88,7 +88,7 @@ int main(int argc, char **argv) {
     TokenizerT* tokenizer = TKCreate(argv[1]);
 	
     char* returnedtoken = NULL;
-    while((returntoken = TKGetNextToken(tokenizer->ptr)) != NULL){
+    while((returnedtoken = TKGetNextToken(tokenizer->ptr)) != NULL){
 	//Print returnedtoken 
     }	
 
