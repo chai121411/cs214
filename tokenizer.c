@@ -56,7 +56,18 @@ void TKDestroy( TokenizerT * tk  ) {
 */
 
 char *TKGetNextToken( TokenizerT * tk  ) {
-
+    int tokenType = 0;
+    //string in here to track the token
+    //what the token is currently
+    //
+    //check the start to see if it's 
+    //word
+    //int
+    //operator
+// go though token.input character by charater
+// increment currentptr in tokenizer
+// a function to check each character a boolean
+// word int operator as input
     return NULL;
 
 }
