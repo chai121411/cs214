@@ -1,133 +1,209 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 /*
 *This takes in a char ptr and prints the C operator associated with it
-*This method uses a bunch of if and else if statements
-*May need to be modified to return a char ptr
+*This method returns the char ptr to the beginning of the next token
+*This method returns NULL if input argument is NULL or is not a C operator
 */
-void printOperators(char* str){
+char* printOperators(char* str){
   if(str == NULL){
     printf("NULL\n");
-    return;
+    return NULL;
   }
-  if(str[0] == '(')
+  
+  char* ptr = str;
+
+  if(str[0] == '('){
     printf("left parenthesis: (\n");
-  else if(str[0] == ')')
+    return ++ptr;
+  }
+  else if(str[0] == ')'){
     printf("right parenthesis: )\n");
-  else if(str[0] == '[')
+    return ++ptr;
+  }
+  else if(str[0] == '['){
     printf("left brace: [\n");
-  else if(str[0] == ']')
+    return ++ptr;
+  }
+  else if(str[0] == ']'){
     printf("right brace: ]\n");
-  else if(str[0] == '.')
+    return ++ptr;
+  }
+  else if(str[0] == '.'){
     printf("structure member: .\n");
-  else if(str[0] == ',')
+    return ++ptr;
+  }
+  else if(str[0] == ','){
     printf("comma operator: ,\n");
-  else if(str[0] == '~')
+    return ++ptr;
+  }
+  else if(str[0] == '~'){
     printf("1's comp: ~\n");
-  else if(str[0] == '?')
-    printf("question mark: ?\n");
-  else if(str[0] == ':')
-    printf("colon: :\n");
-  else if(str[0] == ';')
-    printf("semicolon: ;\n");
+    return ++ptr;
+  }
   else if(str[0] == '+'){
-    if(str[1] == '+')
+    if(str[1] == '+'){
       printf("inc: ++\n");
-    else if(str[1] == '=')
+      return (ptr += 2);
+    }
+    else if(str[1] == '='){
       printf("plusequals: +=\n");
-    else 
+      return ptr += 2;
+    }
+    else{ 
       printf("plus: +\n");
+      return ++ptr;
+    }
   }
   else if(str[0] == '-'){
-    if(str[1] == '-')
+    if(str[1] == '-'){
       printf("dec: --\n");
-    else if(str[1] == '=')
+      return ptr += 2;
+    }
+    else if(str[1] == '='){
       printf("minusequals: -=\n");
-    else if(str[1] == '>')
+      return ptr += 2;
+    }
+    else if(str[1] == '>'){
       printf("structure pointer: ->\n");
-    else 
+      return ptr += 2;
+    }
+    else{ 
       printf("minus: -\n");
+      return ++ptr;
+    }
   }
   else if(str[0] == '*'){
-    if(str[1] == '=')
+    if(str[1] == '='){
       printf("multiplyequals: *=\n");
-    else if(str[1] == '/')
-      printf("ending block comment: */\n");
-    else 
+      return ptr += 2;
+    }
+    else{ 
       printf("multiply: *\n");
+      return ++ptr;
+    }
   }
   else if(str[0] == '/'){
-    if(str[1] == '=')
+    if(str[1] == '='){
       printf("divideequals: /=\n");
-    else if(str[1] == '*')
-      printf("beginning block comment: /*\n");
-    else 
+      return ptr += 2;
+    }
+    else{
       printf("divide: /\n");  
+      return ++ptr;
+    }
   }
   else if(str[0] == '%'){
-    if(str[1] == '=')
+    if(str[1] == '='){
       printf("moduloequals: %=\n");
-    else 
+      return ptr += 2;
+    }
+    else{ 
       printf("modulo: %\n");    
+      return ++ptr;
+    }
   }
   else if(str[0] == '='){
-    if(str[1] == '=')
+    if(str[1] == '='){
       printf("equality operator: ==\n");
-    else
+      return ptr += 2;
+    }
+    else{
       printf("assignment: =\n");
+      return ++ptr;
+    }
   }
   else if(str[0] == '!'){
-    if(str[1] == '=')
+    if(str[1] == '='){
       printf("not equals: !=\n");
-    else 
+      return ptr += 2;
+    }
+    else{ 
       printf("negate: !\n");
+      return ++ptr;
+    }
   }
   else if(str[0] == '&'){
-    if(str[1] == '=')
+    if(str[1] == '='){
       printf("bitwise and assignment: &=\n");
-    else if(str[1] == '&')
+      return ptr += 2;
+    }
+    else if(str[1] == '&'){
       printf("logical and: &&\n");
-    else 
+      return ptr += 2;
+    }
+    else{ 
       printf("bitwise and: &\n");
+      return ++ptr;
+    }
   }
   else if(str[0] == '|'){
-    if(str[1] == '=')
+    if(str[1] == '='){
       printf("bitwise or assignment: |=\n");
-    else if(str[1] == '|')
+      return ptr += 2;
+    }
+    else if(str[1] == '|'){
       printf("logical or: ||\n");
-    else
+      return ptr += 2;
+    }
+    else{
       printf("bitwise or: |\n");
+      return ++ptr;
+    }
   }
   else if(str[0] == '^'){
-    if(str[1] == '=')
+    if(str[1] == '='){
       printf("bitwise xor assignment: ^=\n");
-    else
+      return ptr += 2;
+    }
+    else{
       printf("bitwise xor: ^\n");
+      return ++ptr;
+    }
   }
   else if(str[0] == '>'){
     if(str[1] == '>'){
-      if(str[2] == '=')
+      if(str[2] == '='){
 	printf("shift right assignment: >>=\n");
-      else
+	return ptr += 3;
+      }
+      else{
 	printf("shift right: >>\n");
+	return ptr += 2;
+      }
     }
-    else if(str[1] == '=')
+    else if(str[1] == '='){
       printf("greater than or equal: >=\n");
-    else
+      return ptr += 2;
+    }
+    else{
       printf("greater than: >\n");
+      return ++ptr;
+    }
   }
   else if(str[0] == '<'){
     if(str[1] == '<'){
-      if(str[2] == '=')
+      if(str[2] == '='){
 	printf("shift left assignment: <<=\n");
-      else
+	return ptr += 3;
+      }
+      else{
 	printf("shift left: <<\n");
+	return ptr += 2;
+      }
     }
-    else if(str[1] == '=')
+    else if(str[1] == '='){
       printf("less than or equal: <=\n");
-    else
+      return ptr += 2;
+    }
+    else{
       printf("less than: <\n");
+      return ++ptr;
+    }
   }
+ 
+  return NULL;
 
 }
